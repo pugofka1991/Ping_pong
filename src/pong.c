@@ -93,7 +93,7 @@ do {
                 printf(".");
                 i = i + 1;
             }
-            if ( i ==  82 && (y >= 1 && y <= 26)) {
+            if (i ==  82 && (y >= 1 && y <= 26)) {
                 printf(".");
                 i = i + 1;
             }
@@ -189,7 +189,7 @@ int yBall(int ball_Y, int ball_moveY) {
     if (ball_Y == 25 || ball_Y == 2) {
         ball_moveY *= (-1);
     }
-return ball_moveY;
+    return ball_moveY;
 }
 
 int move(int ball, int ball_move) {
