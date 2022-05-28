@@ -6,7 +6,7 @@ int DrawPlayground(int x, int y, int r1, int r2, int sc1, int sc2, int ball_X, i
 int rocket1(int r1, char movement);
 int rocket2(int r2, char movement);
 int drawScore(int sc1, int sc2);
-int drawBall(int ball_X, int ball_Y);
+int drawBall();
 int Winner1();
 int Winner2();
 int xBall(int ball_X, int ball_moveX);
@@ -35,15 +35,15 @@ int UpdatePlayground(int x, int y) {
     while (r1 > 0) {
         printf("\e[H\e{\e{");
         DrawPlayground(x, y, r1, r2, sc1, sc2, ball_X, ball_Y);
-        if (sc1 == 21 || sc2 == 21) {
+        if (sc1 == 21 || sc2 == 21 || movement == 'q') {
             game_over(sc1, sc2);
             break;
         }
         scanf("%c", &movement);
-        if (movement == 'A' || (movement == 'Z')) {
+        if (movement == 'A' || movement == 'Z' || movement == 'a' || movement == 'z') {
             r1 = rocket1(r1, movement);
         }
-        if (movement == 'K' || (movement == 'M')) {
+        if (movement == 'K' || movement == 'M' || movement == 'k' || movement == 'm') {
             r2 = rocket2(r2, movement);
         }
         if (movement == 32 || sc1 != 21 || sc2 != 21) {
@@ -130,12 +130,12 @@ return 0;
 }
 
 int rocket1(int r1, char movement) {
-    if (movement == 'A') {
+    if (movement == 'A' || movement == 'a') {
         r1++;
         if (r1 >= 24) {
             r1 = 23;
         }
-    } else if (movement == 'Z') {
+    } else if (movement == 'Z' || movement == 'z') {
         r1--;
         if (r1 <= 2) {
             r1 = 3;
@@ -145,12 +145,12 @@ return r1;
 }
 
 int rocket2(int r2, char movement) {
-    if (movement == 'K') {
+    if (movement == 'K' || movement == 'k') {
         r2++;
         if (r2 >= 24) {
             r2 = 23;
         }
-    } else if (movement == 'M') {
+    } else if (movement == 'M' || movement == 'm') {
         r2--;
         if (r2 <= 2) {
             r2 = 3;
